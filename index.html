@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luna-Nyro · Linux desktop tools, hardware hacks &amp; apps</title>
+  <meta name="description" content="Open-source projects by Luna-Nyro: Glaze and Welcome for the Cinnamon desktop, the Tandem phone link and Gaffer DMX lightboard apps, and autolight and brcm43602-fix for running Linux on a 2017 MacBook Pro.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0e1117" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f5f6fb" media="(prefers-color-scheme: light)">
+  <meta name="referrer" content="no-referrer">
+  <link rel="canonical" href="https://luna-nyro.github.io/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Luna-Nyro">
+  <meta property="og:description" content="Linux desktop tools, hardware hacks and apps.">
+  <meta property="og:url" content="https://luna-nyro.github.io/">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <!-- Icon sprite (decorative; every use is aria-hidden) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-github" viewBox="0 0 16 16">
+      <path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
+    </symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3a9 9 0 1 0 0 18c1 0 1.7-.8 1.7-1.7 0-.45-.17-.83-.43-1.12-.26-.3-.42-.68-.42-1.1 0-.94.76-1.7 1.7-1.7H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3Z"/>
+      </g>
+      <g fill="currentColor">
+        <circle cx="7.5" cy="11.5" r="1.3"/><circle cx="10" cy="7.5" r="1.3"/>
+        <circle cx="14.5" cy="7.5" r="1.3"/><circle cx="17" cy="11" r="1.3"/>
+      </g>
+    </symbol>
+    <symbol id="i-sunrise" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 17h18M7 17a5 5 0 0 1 10 0M12 5v3M5.2 9.7l1.8 1.8M18.8 9.7 17 11.5M8 20.5h8"/>
+      </g>
+    </symbol>
+    <symbol id="i-link" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2.5" y="8" width="6.5" height="12" rx="1.6"/>
+        <rect x="11" y="4" width="10.5" height="8.5" rx="1.4"/>
+        <path d="M14 16.5h4.5M16.25 12.5v4M5.75 17h0"/>
+      </g>
+    </symbol>
+    <symbol id="i-spot" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3.5 7.5 10 4.5l2.5 5.5L6 13Z"/>
+        <path d="M12.6 8.2 21 7M12.9 10.2l7.4 4.6M5.5 13l-1 7M2.5 20.5h5"/>
+      </g>
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>
+      </g>
+    </symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.7 15.9a5 5 0 0 1 6.6 0"/>
+      </g>
+      <circle cx="12" cy="19.3" r="1.3" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-brush" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 4 11 13M8.5 14.5c-2 0-3.5 1.5-3.5 3.5 0 1-.5 2-1.5 2.5 1 .5 2 .5 3 .5 2.8 0 4.5-1.7 4.5-4 0-1.4-1.1-2.5-2.5-2.5Z"/>
+      </g>
+    </symbol>
+    <symbol id="i-apps" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="4" y="4" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="3.25"/>
+        <rect x="4" y="13.5" width="6.5" height="6.5" rx="3.25"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="2"/>
+      </g>
+    </symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4.5" y="5" width="15" height="10" rx="1.5"/><path d="M2.5 19h19"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to projects</a>
+
+  <header class="wrap topbar">
+    <div class="topbar-inner glass">
+      <a class="brand" href="#top" aria-label="Luna-Nyro, back to top">
+        <img src="assets/favicon.svg" alt="" width="28" height="28">
+        <span>Luna-Nyro</span>
+      </a>
+      <nav class="topnav" aria-label="Sections">
+        <ul>
+          <li><a class="section-link" href="#desktop">Desktop</a></li>
+          <li><a class="section-link" href="#apps">Apps</a></li>
+          <li><a class="section-link" href="#macbook">MacBook on Linux</a></li>
+          <li>
+            <a class="gh" href="https://github.com/Luna-Nyro">
+              <svg aria-hidden="true"><use href="#i-github"/></svg>GitHub
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="wrap hero" id="top" aria-labelledby="hero-title">
+      <p class="eyebrow">Open source · Linux</p>
+      <h1 id="hero-title">Luna-Nyro</h1>
+      <p class="tagline">
+        I build Linux desktop tools, hardware hacks and apps: a frosted-glass theme and a sign-in
+        animation for Cinnamon, a phone link for Android, a DMX lightboard, and fixes for running
+        Linux on a 2017 MacBook Pro.
+      </p>
+      <ul class="jump" aria-label="Project groups">
+        <li><a class="glass" href="#desktop"><span class="dot"><svg aria-hidden="true"><use href="#i-brush"/></svg></span>Desktop &amp; theming</a></li>
+        <li><a class="glass" href="#apps"><span class="dot"><svg aria-hidden="true"><use href="#i-apps"/></svg></span>Apps</a></li>
+        <li><a class="glass" href="#macbook"><span class="dot"><svg aria-hidden="true"><use href="#i-laptop"/></svg></span>MacBook Pro on Linux</a></li>
+      </ul>
+    </section>
+
+    <!-- ======================= Desktop & theming ======================= -->
+    <section class="wrap group" id="desktop" aria-labelledby="desktop-title">
+      <div class="group-head">
+        <h2 id="desktop-title">Desktop &amp; theming</h2>
+        <p>Making the Cinnamon desktop look and feel like Material&nbsp;3: glass surfaces, tonal colour and motion.</p>
+      </div>
+      <div class="cards">
+
+        <article class="card glass" aria-labelledby="glaze-title">
+          <div class="card-head">
+            <span class="icon"><svg aria-hidden="true"><use href="#i-palette"/></svg></span>
+            <div>
+              <h3 id="glaze-title"><a href="https://github.com/Luna-Nyro/glaze">Glaze</a></h3>
+              <p class="kind">Desktop theme for Cinnamon 6.4 / 6.6</p>
+            </div>
+          </div>
+          <p>
+            A Material&nbsp;3 “frosted glass” theme for Cinnamon: a floating, rounded panel split into
+            glass islands, rounded windows, M3 colour roles generated from a single seed colour, and a
+            Material Symbols icon theme. Everything is built from one set of design tokens, so changing
+            the seed re-tints the shell, GTK3, GTK4/libadwaita and the icons together. A companion
+            extension adds real backdrop blur; without it the theme still works with near-opaque surfaces.
+          </p>
+          <ul class="features">
+            <li>Shell theme with pill menus, tonal window list and M3 calendar, notifications, OSD, switches and sliders</li>
+            <li>GTK3 theme with 20&nbsp;px rounded windows (CSD and Muffin frames) plus GTK4/libadwaita palette overrides</li>
+            <li>Material Symbols Rounded icons for ~600 symbolic names, tonal squircle app icons and folders</li>
+            <li>Companion extension: two-pass gaussian blur behind panel islands and popup menus</li>
+            <li>Dark and Light variants; <code>glaze seed</code> rebuilds from any accent, <code>glaze rollback</code> undoes <code>apply</code></li>
+          </ul>
+          <dl class="meta">
+            <dt>Tech</dt>
+            <dd><ul class="chips"><li>Python</li><li>materialyoucolor</li><li>GTK / Cinnamon CSS</li><li>Cinnamon extension (JS)</li></ul></dd>
+            <dt>License</dt>
+            <dd>GPL-3.0-or-later (bundled Material Symbols: Apache-2.0)</dd>
+          </dl>
+          <a class="repo-link" href="https://github.com/Luna-Nyro/glaze">
+            <svg aria-hidden="true"><use href="#i-github"/></svg>Luna-Nyro/glaze
+          </a>
+        </article>
+
+        <article class="card glass" aria-labelledby="welcome-title">
+          <div class="card-head">
+            <span class="icon alt"><svg aria-hidden="true"><use href="#i-sunrise"/></svg></span>
+            <div>
+              <h3 id="welcome-title"><a href="https://github.com/Luna-Nyro/welcome">Welcome</a></h3>
+              <p class="kind">Sign-in transition extension for Cinnamon</p>
+            </div>
+          </div>
+          <p>
+            A Cinnamon extension that plays an animation when you log in and when you unlock the screen.
+            Your wallpaper comes alive: its colours swirl and drift through a GLSL flow field with hue
+            drift and a light sweep while a greeting fades in. Then the desktop opens from the centre
+            through a glowing, organic edge as the colours settle back onto the still wallpaper. It
+            replaces Cinnamon’s black startup fade, and on unlock it picks up from the dimmed
+            lock-screen wallpaper so there is no flash of bare desktop.
+          </p>
+          <ul class="features">
+            <li>Login and unlock transitions, each toggleable</li>
+            <li>Time-of-day greeting with date and time</li>
+            <li>Different every run: flow, swirl, hue drift, reveal origin, edge shape and tempo are randomised</li>
+            <li>Multi-monitor aware, with the wallpaper at the correct aspect ratio on each screen</li>
+            <li>Speed and colour-motion settings, plus preview buttons</li>
+          </ul>
+          <dl class="meta">
+            <dt>Tech</dt>
+            <dd><ul class="chips"><li>JavaScript (Cinnamon / Clutter / St)</li><li>GLSL shader</li><li>X11</li></ul></dd>
+            <dt>License</dt>
+            <dd>GPL-2.0-or-later</dd>
+          </dl>
+          <a class="repo-link" href="https://github.com/Luna-Nyro/welcome">
+            <svg aria-hidden="true"><use href="#i-github"/></svg>Luna-Nyro/welcome
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================== Apps ============================== -->
+    <section class="wrap group" id="apps" aria-labelledby="apps-title">
+      <div class="group-head">
+        <h2 id="apps-title">Apps</h2>
+        <p>Native GTK&nbsp;4 / libadwaita apps written in Rust, one of them with an Android companion.</p>
+      </div>
+      <div class="cards">
+
+        <article class="card glass" aria-labelledby="tandem-title">
+          <div class="card-head">
+            <span class="icon"><svg aria-hidden="true"><use href="#i-link"/></svg></span>
+            <div>
+              <h3 id="tandem-title"><a href="https://github.com/Luna-Nyro/tandem">Tandem</a></h3>
+              <p class="kind">Your Android phone on your Linux desktop</p>
+            </div>
+          </div>
+          <p>
+            A lightweight alternative to Windows Phone Link, written from scratch. A GTK&nbsp;4 desktop app
+            shows your phone’s status and notifications next to Messages, Calls and Photos, and a separate
+            window lets you see and control the phone screen. A small background service
+            (<code>tandemd</code>, about 6&nbsp;MB idle) keeps the link alive, and the Android app explains
+            every permission before asking. Phone and computer talk directly over the local network with
+            TLS&nbsp;1.3 and certificate pinning, or through an optional self-hosted relay that only
+            forwards end-to-end encrypted data.
+          </p>
+          <ul class="features">
+            <li>Read and send SMS, see MMS photos; answer, decline and place calls, talking through the PC over Bluetooth</li>
+            <li>Notifications with reply and action buttons; two-way clipboard sync; recent photos with drag-out</li>
+            <li>Phone screen window to view and control the phone</li>
+            <li>Phone as touchpad and keyboard remote; lock or shut down the PC; share files both ways</li>
+            <li>Experimental: fingerprint unlock of the PC and using the phone as the PC’s speaker</li>
+          </ul>
+          <dl class="meta">
+            <dt>Tech</dt>
+            <dd><ul class="chips"><li>Rust</li><li>GTK 4 + libadwaita</li><li>GStreamer</li><li>tokio · rustls</li><li>Kotlin</li><li>Jetpack Compose · M3 Expressive</li></ul></dd>
+            <dt>License</dt>
+            <dd>GPL-3.0-or-later</dd>
+          </dl>
+          <a class="repo-link" href="https://github.com/Luna-Nyro/tandem">
+            <svg aria-hidden="true"><use href="#i-github"/></svg>Luna-Nyro/tandem
+          </a>
+        </article>
+
+        <article class="card glass" aria-labelledby="gaffer-title">
+          <div class="card-head">
+            <span class="icon alt"><svg aria-hidden="true"><use href="#i-spot"/></svg></span>
+            <div>
+              <h3 id="gaffer-title"><a href="https://github.com/Luna-Nyro/gaffer">Gaffer</a></h3>
+              <p class="kind">A simple DMX lightboard for Linux</p>
+            </div>
+          </div>
+          <p>
+            Gaffer controls the brightness and colour of DMX lights from a GTK4/libadwaita window. Save
+            scenes and fade between them, or run automations, either effects like Breathe, Rainbow, Chase,
+            Candle, Colour cycle and Strobe or sequences of scenes, by hand, at a time of day on chosen
+            weekdays, or when Gaffer opens. A built-in soundboard plays sound files and can drive the
+            lights from them. It is aimed at small rigs on one DMX universe through a cheap USB-DMX
+            interface, not at replacing a full lighting console.
+          </p>
+          <ul class="features">
+            <li>Per-light brightness, colour, on/off and Identify; master fader and blackout</li>
+            <li>Built-in RGB / RGBW / RGBA / dimmer / LED PAR fixture types, or a custom channel order</li>
+            <li>Enttec DMX USB Pro–style, Open DMX and uDMX interfaces, detected automatically where possible</li>
+            <li>Simulator stage when no interface is connected, with sample lights to try</li>
+            <li>Soundboard pads with light cues (pulse with the sound, flash, scene, blackout); <code>gaffer ctl</code> remote control</li>
+          </ul>
+          <dl class="meta">
+            <dt>Tech</dt>
+            <dd><ul class="chips"><li>Rust</li><li>GTK 4 + libadwaita</li><li>GStreamer</li><li>DMX512</li></ul></dd>
+            <dt>License</dt>
+            <dd>GPL-3.0-or-later</dd>
+          </dl>
+          <a class="repo-link" href="https://github.com/Luna-Nyro/gaffer">
+            <svg aria-hidden="true"><use href="#i-github"/></svg>Luna-Nyro/gaffer
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ======================= MacBook Pro on Linux ======================= -->
+    <section class="wrap group" id="macbook" aria-labelledby="macbook-title">
+      <div class="group-head">
+        <h2 id="macbook-title">MacBook Pro on Linux</h2>
+        <p>Hardware work on the 2017 13″ MacBookPro14,2 (T1): putting unused sensors to work and digging into its Wi-Fi.</p>
+      </div>
+      <div class="cards">
+
+        <article class="card glass" aria-labelledby="autolight-title">
+          <div class="card-head">
+            <span class="icon"><svg aria-hidden="true"><use href="#i-sun"/></svg></span>
+            <div>
+              <h3 id="autolight-title"><a href="https://github.com/Luna-Nyro/autolight">autolight</a></h3>
+              <p class="kind">Ambient-light brightness and keyboard backlight daemon</p>
+            </div>
+          </div>
+          <p>
+            The T1 iBridge exposes an ambient light sensor that nothing on Linux used. autolight is a small
+            user daemon that reads it and drives the panel brightness through a smoothed lux curve with
+            hysteresis, and turns the keyboard backlight on in the dark and off in the light. It pauses when
+            you change brightness yourself, dims on idle, and writes through logind, so it needs no root,
+            no kernel changes and no system service.
+          </p>
+          <ul class="features">
+            <li>Flicker-free: spike filter, log-domain smoothing, hysteresis band and stepped ramps</li>
+            <li>Manual override per output, resuming after a timeout or on request</li>
+            <li>Idle dimming that coexists with Cinnamon’s own idle dim and respects idle inhibitors</li>
+            <li>Handles lid close, resume from sleep and a re-enumerated sensor</li>
+            <li><code>autolightctl</code> for status, toggle, brighter/dimmer bias and a sensor probe; 66 offline tests</li>
+          </ul>
+          <dl class="meta">
+            <dt>Tech</dt>
+            <dd><ul class="chips"><li>Python 3.11+</li><li>PyGObject</li><li>systemd user service</li><li>logind D-Bus</li><li>IIO / sysfs</li></ul></dd>
+            <dt>License</dt>
+            <dd>MIT</dd>
+          </dl>
+          <a class="repo-link" href="https://github.com/Luna-Nyro/autolight">
+            <svg aria-hidden="true"><use href="#i-github"/></svg>Luna-Nyro/autolight
+          </a>
+        </article>
+
+        <article class="card glass" aria-labelledby="brcm-title">
+          <div class="card-head">
+            <span class="icon alt"><svg aria-hidden="true"><use href="#i-wifi"/></svg></span>
+            <div>
+              <h3 id="brcm-title"><a href="https://github.com/Luna-Nyro/brcm43602-fix">brcm43602-fix</a></h3>
+              <p class="kind">Investigating BCM43602 Wi-Fi under Linux</p>
+            </div>
+          </div>
+          <p class="status warn">Research project · not fixed</p>
+          <p>
+            Tools and research notes for making the Broadcom BCM43602 (<code>brcmfmac</code>) in this
+            MacBook Pro join 2.4&nbsp;GHz networks and transmit at a normal rate. The tools recover the
+            card’s own calibration from its SROM, decode it into NVRAM and A/B-test candidates on the real
+            card with automatic rollback. After about 45 candidate NVRAMs, the findings point at the
+            firmware rather than a missing value. Everything is published so others don’t have to repeat
+            the work.
+          </p>
+          <ul class="features">
+            <li>Ranged, resumable fetch of only the Broadcom kexts (~30&nbsp;MB) from a 1.69&nbsp;GB macOS update</li>
+            <li>Read-only SROM dump through PCI BAR0 and a decoder to <code>name=value</code> NVRAM text</li>
+            <li>Candidate-NVRAM lab that scans, optionally joins, records results and always restores</li>
+            <li>Installer with backups, a self-reverting timer and a boot failsafe; matching rollback script</li>
+            <li>Offline test suite: no root, no hardware, no network beyond localhost</li>
+          </ul>
+          <dl class="meta">
+            <dt>Tech</dt>
+            <dd><ul class="chips"><li>Python (stdlib)</li><li>Bash</li><li>systemd</li><li>brcmfmac / PCI</li></ul></dd>
+            <dt>License</dt>
+            <dd>MIT</dd>
+          </dl>
+          <a class="repo-link" href="https://github.com/Luna-Nyro/brcm43602-fix">
+            <svg aria-hidden="true"><use href="#i-github"/></svg>Luna-Nyro/brcm43602-fix
+          </a>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap site-footer">
+    <div class="footer-inner glass">
+      <p>All projects are personal open-source work, shared as is.</p>
+      <p><a href="https://github.com/Luna-Nyro">github.com/Luna-Nyro</a></p>
+    </div>
+  </footer>
+</body>
+</html>
